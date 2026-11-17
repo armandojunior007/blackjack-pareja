@@ -1,3 +1,11 @@
+"""Versión por consola del Blackjack.
+
+Es la primera interfaz del proyecto. Se mantiene para poder jugar sin
+ventana con: python main.py --consola
+"""
+
+from juego import JuegoBlackjack
+
 
 def mostrar_carta(carta):
     return f'{carta["valor"]} de {carta["palo"]}'
@@ -56,3 +64,39 @@ def mostrar_resultado(juego):
 
     print("\n" + juego.resultado)
     print("\nFin de la partida.")
+
+
+def jugar():
+    print("\n¡Bienvenido al BLACKJACK!")
+    print("El objetivo es conseguir 21 puntos sin pasarse.")
+
+    juego = JuegoBlackjack()
+
+    mostrar_estado(juego, ocultar_crupier=True)
+
+    while not juego.terminado:
+
+        opcion = pedir_accion()
+
+        if opcion == "1":
+            juego.pedir_carta()
+
+            if not juego.terminado:
+                mostrar_estado(juego, ocultar_crupier=True)
+
+        elif opcion == "2":
+            juego.plantarse()
+
+    mostrar_resultado(juego)
+
+
+def jugar_en_consola():
+    """Juega partidas por consola hasta que el jugador quiera salir."""
+    while True:
+        jugar()
+
+        otra = input("\n¿Quieres jugar otra partida? (s/n): ").lower().strip()
+
+        if otra != "s":
+            print("\n¡Gracias por jugar al Blackjack!")
+            break
