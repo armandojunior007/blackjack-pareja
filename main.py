@@ -1,6 +1,7 @@
 
 from juego import JuegoBlackjack
 from interfaz import mostrar_estado, pedir_accion, mostrar_resultado
+from historial import guardar_resultado, mostrar_estadisticas
 
 
 def jugar():
@@ -25,6 +26,12 @@ def jugar():
             juego.plantarse()
 
     mostrar_resultado(juego)
+
+    # Guardar el resultado de la partida
+    guardar_resultado(juego.resultado)
+
+    # Mostrar las estadísticas acumuladas
+    mostrar_estadisticas()
 
 
 def main():
