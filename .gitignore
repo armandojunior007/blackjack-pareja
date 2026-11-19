@@ -8,3 +8,6 @@ venv/
 
 # Configuración de VS Code
 .vscode/
+
+# Historial de partidas
+historial.json
