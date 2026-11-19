@@ -5,6 +5,7 @@ ventana con: python main.py --consola
 """
 
 from juego import JuegoBlackjack
+from historial import guardar_resultado, mostrar_estadisticas
 
 
 def mostrar_carta(carta):
@@ -88,6 +89,12 @@ def jugar():
             juego.plantarse()
 
     mostrar_resultado(juego)
+
+    # Guardar el resultado de la partida
+    guardar_resultado(juego.resultado)
+
+    # Mostrar las estadísticas acumuladas
+    mostrar_estadisticas()
 
 
 def jugar_en_consola():
